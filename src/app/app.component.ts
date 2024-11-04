@@ -24,7 +24,7 @@ export class AppComponent {
 
   categorias = [
     {
-      title: "Guirlandas",
+      categoria: "Guirlanda",
       description: "Uma deliciosa Guirlanda feita com massa de brownie e recheada com as opções irresistíveis",
       items: [
         {
@@ -48,7 +48,7 @@ export class AppComponent {
       ]
     },
     {
-      title: "Pudins",
+      categoria: "Pudim",
       description: "Pudins irresistíveis, preparados com ingredientes da mais alta qualidade",
       items: [
         {
@@ -64,7 +64,7 @@ export class AppComponent {
       ]
     },
     {
-      title: "Tortas",
+      categoria: "Torta",
       description: "Tortas incomparáveis, feitas com ingredientes selecionados para oferecer a melhor experiência de sabor",
       items: [
         {
@@ -80,7 +80,7 @@ export class AppComponent {
       ]
     },
     {
-      title: "Outros",
+      categoria: "Outro",
       description: "Receitas únicas, preparadas com ingredientes de primeira, para uma experiência de sabor inesquecível ",
       items: [
         {
@@ -99,7 +99,8 @@ export class AppComponent {
 
   title = 'Cardápio de Natal';
 
-  openDialog(item: any) {
+  openDialog(item: any, categoria: string) {
+    item.categoria = categoria != "Outro" ? `${categoria} de` : '';
     this.dialog.open(DialogComponent, {
       data: item,
       panelClass: 'slide-from-bottom-dialog'

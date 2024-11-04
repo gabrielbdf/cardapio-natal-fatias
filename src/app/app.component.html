@@ -12,7 +12,7 @@
   <div class="items">
 
     <div class="categoria border-bottom mb-3" *ngFor="let categoria of categorias">
-      <p class="font-weight-bold mb-1 text-1">{{categoria.title}}</p>
+      <p class="font-weight-bold mb-1 text-1">{{categoria.categoria}}</p>
       <p class="text-3 text-muted">{{categoria.description}}</p>
 
       <div class="item pt-2 pb-2" *ngFor="let item of categoria.items">
@@ -25,7 +25,7 @@
               <span class="text-black-50 text-4"><del> R$ {{item.valor * 1.15 | number:'1.0-0'}}</del></span>
               <span class="desconto  bg-success text-white text-5">-15%</span>  
             </p>
-            <button class="p-0" (click)="openDialog(item)" mat-button>Peça Agora</button>
+            <button class="p-0" (click)="openDialog(item, categoria.categoria)" mat-button>Peça Agora</button>
           </div>
           <div class="col-4">
             <img [src]="item.title | appImageSrc" class="img-fluid rounded ">
