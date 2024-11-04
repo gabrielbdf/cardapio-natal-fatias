@@ -58,10 +58,9 @@ export class DialogComponent implements AfterViewInit {
     if(this.selectedAdicionais.length > 0) {
       orderString = `${orderString}\nAdicionais de: ${adicionais}`;
     }
-    console.log(orderString);
     //const url = `https://wa.me//5521981978344?text=${encodeURIComponent(orderString)}`;
-    //const url = `https://api.whatsapp.com/send?phone=5521964212708&text=${encodeURIComponent(orderString)}`;
-    //window.open(url, "_blank");
+    const url = `https://api.whatsapp.com/send?phone=5521964212708&text=${encodeURIComponent(orderString)}`;
+    window.open(url, "_blank");
     
   }
 
