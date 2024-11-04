@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.slide-from-bottom-dialog mat-dialog-container {
+  animation: slideFromBottom 300ms ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideFromBottom {
+  from {
+    transform: translateY(100%); 
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0); 
+    opacity: 1;
+  }
+}

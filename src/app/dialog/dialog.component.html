@@ -1,0 +1,18 @@
+<div mat-dialog-title>
+    <img [src]="data.title | appImageSrc" alt="Logo" class="img-fluid" />
+    <p>{{data.title}}</p>
+</div>
+<mat-dialog-content>
+    <p class="pt-2 pb-2">{{data.description}}</p>
+    <div *ngIf="data.adicionais">
+        <p><b>Turbine seu doce com até 3 adicionais:</b></p>
+        <mat-selection-list #shoes>
+            @for (adicional of adicionais; track adicional) {
+            <mat-list-option>{{adicional}}</mat-list-option>
+            }  
+        </mat-selection-list>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Pedir</button>
+</mat-dialog-actions>
