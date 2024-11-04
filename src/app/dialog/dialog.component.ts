@@ -26,28 +26,18 @@ import { BehaviorSubject } from 'rxjs';
 export class DialogComponent implements AfterViewInit {
 
   @ViewChild('adicionaisView') adicionaisView!: MatSelectionList;
-
-
   readonly data = inject<any>(MAT_DIALOG_DATA);
   adicionais: string[] = ['Ferrero Rocher', 'Morango', 'Damasco', 'Fini', 'Kinder Bueno', 'Nozes', 'Suspiro'];
   selectedAdicionais: string[] = [];
 
   ngAfterViewInit(): void {
-    console.log(this.data);
     if(!this.adicionaisView) return;
     this.adicionaisView.selectionChange.subscribe(() => {
-      const adicionais = this.adicionaisView.selectedOptions.selected.map(i => i.value);
-      if (adicionais.length >= 3) {
-        this.adicionaisView.options.forEach(i => {
-          if(!i.selected) {
-            i.disabled = true;
-          }
-        })
-      }else{
-        this.adicionaisView.options.forEach(i => {
-          i.disabled = false;
-        })
-      }
+      const maxAdicionais = 3
+      this.adicionaisView.options.forEach(option => {
+        const maxAdicionaisReached = this.adicionaisView.selectedOptions.selected.length >= maxAdicionais;
+        option.disabled = maxAdicionaisReached && !option.selected;
+      });
     });
   }
 
@@ -58,10 +48,8 @@ export class DialogComponent implements AfterViewInit {
     if(this.selectedAdicionais.length > 0) {
       orderString = `${orderString}\nAdicionais de: ${adicionais}`;
     }
-    //const url = `https://wa.me//5521981978344?text=${encodeURIComponent(orderString)}`;
-    const url = `https://api.whatsapp.com/send?phone=5521964212708&text=${encodeURIComponent(orderString)}`;
+    const url = `https://api.whatsapp.com/send?phone=5521981978344&text=${encodeURIComponent(orderString)}`;
     window.open(url, "_blank");
-    
   }
 
 }
